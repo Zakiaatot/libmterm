@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.22)
 project(
     libmterm
     VERSION 0.1.0
@@ -38,9 +38,21 @@ if(${TARGET} STREQUAL "linux")
         PROPERTIES
         ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/linux
     )
-    # aux_source_directory(${PROJECT_SOURCE_DIR}/src SRC)
-    # add_executable(test ${SRC})
-# elseif(${TARGET} STREQUAL "android")
+elseif(${TARGET} STREQUAL "android")
+    add_definitions(-DTARGET_ANDROID)
+    include_directories(${PROJECT_SOURCE_DIR}/jni/android)
+    add_library(mterm SHARED ${SRC})
+    set_target_properties(
+        mterm
+        PROPERTIES
+        LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android
+    )
+    add_library(mterm_static STATIC ${SRC})
+    set_target_properties(
+        mterm_static
+        PROPERTIES
+        ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android
+    )
 else()
     message(FATAL_ERROR "Only support for Android and Linux now!")
 endif()
