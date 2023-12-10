@@ -28,7 +28,7 @@
     bool CheckRunningMterm(unsigned int id);
 ```
 
-### cxx
+### CXX
 
 See
 [/example/cxx](/example/cxx) for details.
@@ -83,7 +83,7 @@ int main(void)
 }
 ```
 
-### java
+### JAVA
 
 See
 [/example/java](/example/java) for details.
