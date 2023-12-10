@@ -141,6 +141,20 @@ void MtermPool::SetReadNonblockMterm(unsigned int id)
     return (mtermMap_.find(id)->second)->SetReadNonblock();
 }
 
+void MtermPool::SetWindowSizeMterm
+(
+    unsigned int id,
+    unsigned short rows,
+    unsigned short cols
+)
+{
+    if (!IsIdValid(id))
+    {
+        return;
+    }
+    return (mtermMap_.find(id)->second)->ResizeWindow(rows, cols);
+}
+
 
 bool MtermPool::CheckRunning(unsigned int id)
 {

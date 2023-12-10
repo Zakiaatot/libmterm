@@ -34,6 +34,7 @@ public:
     int Write(const void* buf, unsigned long size) const;
     int Wait() const;
     void SetReadNonblock() const;
+    void ResizeWindow(unsigned short rows, unsigned short cols);
 };
 
 #endif //_MTERM_H_

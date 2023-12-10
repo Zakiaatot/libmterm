@@ -186,3 +186,9 @@ void Mterm::SetReadNonblock() const
     flag |= O_NONBLOCK;
     fcntl(ptmFd_, F_SETFL, flag);
 }
+
+void Mterm::ResizeWindow(unsigned short rows, unsigned short cols)
+{
+    struct winsize ws = { .ws_row = rows,.ws_col = cols };
+    ioctl(ptmFd_, TIOCSWINSZ, &ws);
+}

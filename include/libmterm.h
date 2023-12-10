@@ -21,6 +21,7 @@ extern "C"
     int WriteMterm(unsigned int id, const char* buf, unsigned long size);
     int WaitMterm(unsigned int id);
     void SetReadNonblockMterm(unsigned int id);
+    void SetWindowSizeMterm(unsigned int id, unsigned short rows, unsigned short cols);
     bool CheckRunning(unsigned int id);
 
 #ifdef __cplusplus

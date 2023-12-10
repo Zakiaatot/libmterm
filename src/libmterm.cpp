@@ -46,6 +46,16 @@ void SetReadNonblockMterm(unsigned int id)
     return POOL.SetReadNonblockMterm(id);
 }
 
+void SetWindowSizeMterm
+(
+    unsigned int id,
+    unsigned short rows,
+    unsigned short cols
+)
+{
+    return POOL.SetWindowSizeMterm(id, rows, cols);
+}
+
 bool CheckRunning(unsigned int id)
 {
     return POOL.CheckRunning(id);
