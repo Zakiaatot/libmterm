@@ -22,7 +22,7 @@ extern "C"
     int WaitMterm(unsigned int id);
     void SetReadNonblockMterm(unsigned int id);
     void SetWindowSizeMterm(unsigned int id, unsigned short rows, unsigned short cols);
-    bool CheckRunning(unsigned int id);
+    bool CheckRunningMterm(unsigned int id);
 
 #ifdef __cplusplus
 }

@@ -24,6 +24,8 @@ if(NOT DEFINED TARGET)
 endif()
 
 if(${TARGET} STREQUAL "linux")
+    add_definitions(-DTARGET_LINUX)
+    include_directories(${PROJECT_SOURCE_DIR}/jni/linux)
     add_library(mterm SHARED ${SRC})
     set_target_properties(
         mterm

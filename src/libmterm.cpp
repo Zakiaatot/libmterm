@@ -56,7 +56,7 @@ void SetWindowSizeMterm
     return POOL.SetWindowSizeMterm(id, rows, cols);
 }
 
-bool CheckRunning(unsigned int id)
+bool CheckRunningMterm(unsigned int id)
 {
     return POOL.CheckRunning(id);
 }
