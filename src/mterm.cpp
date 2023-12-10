@@ -147,7 +147,7 @@ void Mterm::UpdateRunning()
         Destrory();
 }
 
-int Mterm::Read(char* buf, size_t size)
+int Mterm::Read(char* buf, unsigned long  size)
 {
     int res = read(ptmFd_, buf, size);
     if (res > 0)
@@ -160,7 +160,7 @@ int Mterm::Read(char* buf, size_t size)
     return res;
 }
 
-int Mterm::Write(const void* buf, size_t size) const
+int Mterm::Write(const void* buf, unsigned long  size) const
 {
     return write(ptmFd_, buf, size);
 }
