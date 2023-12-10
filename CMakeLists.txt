@@ -45,13 +45,13 @@ elseif(${TARGET} STREQUAL "android")
     set_target_properties(
         mterm
         PROPERTIES
-        LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android
+        LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android/${ANDROID_ABI}
     )
     add_library(mterm_static STATIC ${SRC})
     set_target_properties(
         mterm_static
         PROPERTIES
-        ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android
+        ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/android/${ANDROID_ABI}
     )
 else()
     message(FATAL_ERROR "Only support for Android and Linux now!")
