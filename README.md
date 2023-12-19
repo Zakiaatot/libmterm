@@ -152,7 +152,7 @@ public class Main {
 ### RUST
 
 See
-[/example/java](/example/rust) for details.
+[/example/rust](/example/rust) for details.
 
 ```rust
 use core::panic;
