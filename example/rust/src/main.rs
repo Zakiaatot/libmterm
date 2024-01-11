@@ -6,7 +6,16 @@ use std::{
 };
 
 fn main() {
-    let id = create_default();
+    let id = create(
+        &"/bin/sh".to_string(),
+        &"/".to_string(),
+        &vec!["-i".into()],
+        &mut vec!["TERM=xterm-256".into()],
+        80,
+        25,
+    );
+    println!("id: {}", id);
+    // let id = create_default();
     if id < 0 {
         panic!("failed to create terminal");
     }

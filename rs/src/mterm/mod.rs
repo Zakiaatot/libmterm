@@ -1,6 +1,9 @@
 mod ffi;
 mod wrapper;
 
+use std::ffi::CString;
+use std::ptr::null_mut;
+
 use wrapper::*;
 
 pub fn create(
@@ -15,8 +18,9 @@ pub fn create(
     let argv_str: &[&str] = binding.as_slice();
     let mut binding = envp
         .iter_mut()
-        .map(|s| s.as_mut_ptr() as *mut u8)
+        .map(|s| CString::new(s.as_str()).unwrap().into_raw() as *mut u8)
         .collect::<Vec<*mut u8>>();
+    binding.push(null_mut());
     let envp_ptr: &mut [*mut u8] = binding.as_mut_slice();
     create_mterm(cmd.as_str(), cwd.as_str(), argv_str, envp_ptr, rows, cols)
 }

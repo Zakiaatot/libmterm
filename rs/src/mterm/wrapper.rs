@@ -1,3 +1,5 @@
+use std::{ffi::CString, ptr::null};
+
 use super::ffi::*;
 
 // Wrapper function for CreateMterm
@@ -9,12 +11,13 @@ pub fn create_mterm(
     rows: u16,
     cols: u16,
 ) -> i32 {
-    let cmd_ptr = cmd.as_ptr() as *const c_char;
-    let cwd_ptr = cwd.as_ptr() as *const c_char;
-    let argv_ptr: Vec<*const c_char> = argv
+    let cmd_ptr = CString::new(cmd).unwrap().into_raw() as *const c_char;
+    let cwd_ptr = CString::new(cwd).unwrap().into_raw() as *const c_char;
+    let mut argv_ptr: Vec<*const c_char> = argv
         .iter()
-        .map(|arg| (*arg).as_ptr() as *const c_char)
+        .map(|arg| CString::new(*arg).unwrap().into_raw() as *const c_char)
         .collect();
+    argv_ptr.push(null());
     let argv_ptr_ptr = argv_ptr.as_ptr();
     let envp_ptr = envp.as_mut_ptr() as *mut *mut c_char;
 
